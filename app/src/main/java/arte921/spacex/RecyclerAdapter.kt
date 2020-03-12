@@ -1,8 +1,11 @@
 package arte921.spacex
 
+import android.content.Intent
+import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.launchcard.view.*
 import org.json.JSONObject
@@ -31,6 +34,14 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.MainViewHolder>()
 
             SUCCESSFUL -> {
                 val jo = json.getJSONObject(position)
+
+                holder.view.setOnClickListener{
+
+                    val intent = Intent(context,LaunchDetailsActivity(jo)::class.java)
+                    context.startActivity(intent)
+                }
+
+
                 holder.view.missionname.text = jo.get("mission_name").toString()
                 holder.view.datetime.text = getDateTimeInstance().format(Date(jo.get("launch_date_unix").toString().toLong() * 1000)).toString()
                 holder.view.rocketname.text = jo.getJSONObject("rocket").get("rocket_name").toString()
