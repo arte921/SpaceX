@@ -9,6 +9,7 @@
     <string name="launchtime">Launch time:</string>
     <string name="spacecraft">Spacecraft:</string>
     <string name="base">Ground base:</string>
+    <string name="payloads">Payloads:</string>
 
     <string name="latei">@string/loading</string>
 

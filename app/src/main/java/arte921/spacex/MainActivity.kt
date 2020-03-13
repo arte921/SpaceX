@@ -20,6 +20,7 @@ const val SUCCESSFUL = 0
 const val ISLOADING = 1
 const val HASFAILED = 2
 const val TESTING = 3
+const val JONAME = "the_jo_JSONObject"
 
 lateinit var json: JSONArray
 var currentFlag = ISLOADING
@@ -27,9 +28,9 @@ var utilTestString = ""
 lateinit var context: Context
 
 class MainActivity : AppCompatActivity() {
-    fun logError(msg: String){
+    private fun logError(msg: String){
         if(testmode){
-            Log.e("ma. err fun ",msg)
+            Log.e("error function",msg)
             currentFlag = TESTING
             utilTestString = msg
             mainrv.adapter?.notifyDataSetChanged()
