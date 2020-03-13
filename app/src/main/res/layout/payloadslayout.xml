@@ -1,16 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tva"
+        android:id="@+id/regime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginTop="8dp"
+        android:text="@string/latei"
+        app:layout_constraintStart_toStartOf="@+id/orbittype"
+        app:layout_constraintTop_toBottomOf="@+id/orbittype" />
+
+    <TextView
+        android:id="@+id/manufacturer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/latei"
+        app:layout_constraintStart_toStartOf="@+id/payloadtype"
+        app:layout_constraintTop_toBottomOf="@+id/payloadtype" />
+
+    <TextView
+        android:id="@+id/payloadnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/latei"
+        app:layout_constraintStart_toEndOf="@+id/barrier"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/payloadname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/latei"
+        app:layout_constraintStart_toStartOf="@+id/payloadnumber"
+        app:layout_constraintTop_toBottomOf="@+id/payloadnumber" />
+
+    <TextView
+        android:id="@+id/payloadnumbersign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/payload_nr"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/payloadnamesign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/payload_name"
+        app:layout_constraintStart_toStartOf="@+id/payloadnumbersign"
+        app:layout_constraintTop_toTopOf="@+id/payloadname" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="payloadnumbersign,payloadnamesign"
+        tools:layout_editor_absoluteX="411dp" />
+
+    <TextView
+        android:id="@+id/typesign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/type"
+        app:layout_constraintStart_toStartOf="@+id/payloadnamesign"
+        app:layout_constraintTop_toTopOf="@+id/payloadtype" />
+
+    <TextView
+        android:id="@+id/mansign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/manufacturer"
+        app:layout_constraintStart_toStartOf="@+id/typesign"
+        app:layout_constraintTop_toTopOf="@+id/manufacturer" />
+
+    <TextView
+        android:id="@+id/natsign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nationality"
+        app:layout_constraintStart_toStartOf="@+id/mansign"
+        app:layout_constraintTop_toTopOf="@+id/nationality" />
+
+    <TextView
+        android:id="@+id/orbitsign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/orbit_type"
+        app:layout_constraintStart_toStartOf="@+id/natsign"
+        app:layout_constraintTop_toTopOf="@+id/orbittype" />
+
+    <TextView
+        android:id="@+id/regimesign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/regime"
+        app:layout_constraintStart_toStartOf="@+id/orbitsign"
+        app:layout_constraintTop_toTopOf="@+id/regime" />
+
+    <TextView
+        android:id="@+id/payloadmasssign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/payload_mass"
+        app:layout_constraintStart_toStartOf="@+id/regimesign"
+        app:layout_constraintTop_toTopOf="@+id/payloadmass" />
+
+    <TextView
+        android:id="@+id/payloadtype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/latei"
+        app:layout_constraintStart_toStartOf="@+id/payloadname"
+        app:layout_constraintTop_toBottomOf="@+id/payloadname" />
+
+    <TextView
+        android:id="@+id/nationality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/latei"
+        app:layout_constraintStart_toStartOf="@+id/manufacturer"
+        app:layout_constraintTop_toBottomOf="@+id/manufacturer" />
+
+    <TextView
+        android:id="@+id/orbittype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/latei"
+        app:layout_constraintStart_toStartOf="@+id/nationality"
+        app:layout_constraintTop_toBottomOf="@+id/nationality" />
+
+    <TextView
+        android:id="@+id/payloadmass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/latei"
+        app:layout_constraintStart_toStartOf="@+id/regime"
+        app:layout_constraintTop_toBottomOf="@+id/regime" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/customers"
+        app:layout_constraintStart_toStartOf="@+id/payloadmasssign"
+        app:layout_constraintTop_toTopOf="@+id/customers" />
+
+    <TextView
+        android:id="@+id/customers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/latei"
+        app:layout_constraintStart_toStartOf="@+id/payloadmass"
+        app:layout_constraintTop_toBottomOf="@+id/payloadmass" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

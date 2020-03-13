@@ -16,6 +16,8 @@ class LaunchDetailsActivity : AppCompatActivity() {
 
         val jo = JSONObject(intent.getStringExtra(JONAME))
 
+        title = jo.get("mission_name").toString()
+
         missionname5.text = jo.get("mission_name").toString()
         datetime5.text = DateFormat.getDateTimeInstance().format(Date(jo.get("launch_date_unix").toString().toLong() * 1000)).toString()
         rocketname5.text = jo.getJSONObject("rocket").get("rocket_name").toString()
