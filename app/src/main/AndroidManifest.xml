@@ -20,5 +20,8 @@
         <activity
             android:name=".LaunchDetailsActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AutoDetailsActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 </manifest>

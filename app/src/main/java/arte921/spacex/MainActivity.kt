@@ -48,6 +48,8 @@ class MainActivity : AppCompatActivity() {
             adapter = RecyclerAdapter()
         }
 
+        //class NamedStringIntended(val label: String, val str: String, val Indentation: Int)
+
         val queue = RequestQueue(DiskBasedCache(cacheDir,1024*1024), BasicNetwork(HurlStack())).apply{start()}
 
         val missionsRequest = JsonArrayRequest(Request.Method.GET,url,null,Response.Listener { response ->

@@ -7,11 +7,14 @@
 
     <TextView
         android:id="@+id/manufacturer"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/latei"
-        app:layout_constraintStart_toStartOf="@+id/payloadtype"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/payloadname"
         app:layout_constraintTop_toBottomOf="@+id/payloadtype" />
 
     <TextView
@@ -25,12 +28,15 @@
 
     <TextView
         android:id="@+id/payloadname"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/latei"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/barrier"
         app:layout_constraintTop_toBottomOf="@+id/payloadnumber" />
 
@@ -97,29 +103,38 @@
 
     <TextView
         android:id="@+id/payloadtype"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/latei"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/payloadname"
         app:layout_constraintTop_toBottomOf="@+id/payloadname" />
 
     <TextView
         android:id="@+id/nationality"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/latei"
-        app:layout_constraintStart_toStartOf="@+id/manufacturer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/payloadname"
         app:layout_constraintTop_toBottomOf="@+id/manufacturer" />
 
     <TextView
         android:id="@+id/payloadmass"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/latei"
-        app:layout_constraintStart_toStartOf="@+id/nationality"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/payloadname"
         app:layout_constraintTop_toBottomOf="@+id/nationality" />
 
     <TextView
@@ -132,13 +147,16 @@
 
     <TextView
         android:id="@+id/customers"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="16dp"
         android:text="@string/latei"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/payloadmass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/payloadname"
         app:layout_constraintTop_toBottomOf="@+id/payloadmass" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

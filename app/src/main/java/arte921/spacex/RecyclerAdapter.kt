@@ -34,7 +34,8 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.MainViewHolder>()
 
                 holder.view.setOnClickListener{
 
-                    val intent = Intent(context,LaunchDetailsActivity()::class.java).apply{
+                    //val intent = Intent(context,LaunchDetailsActivity()::class.java).apply{
+                    val intent = Intent(context,AutoDetailsActivity()::class.java).apply{
                         putExtra(JONAME,jo.toString())
                     }
                     context.startActivity(intent)
