@@ -44,64 +44,54 @@
                 android:id="@+id/spacecraftsignc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:text="@string/spacecraft"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/timesignc"
                 app:layout_constraintTop_toTopOf="@+id/rocketnamec" />
 
             <TextView
                 android:id="@+id/rocketnamec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/latei"
-                app:layout_constraintStart_toEndOf="@+id/barrierc"
+                app:layout_constraintStart_toStartOf="@+id/datetimec"
                 app:layout_constraintTop_toBottomOf="@+id/datetimec" />
 
             <TextView
                 android:id="@+id/launchlocationc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:maxLines="1"
                 android:text="@string/latei"
-                app:layout_constraintStart_toEndOf="@+id/barrierc"
+                app:layout_constraintStart_toStartOf="@+id/rocketnamec"
                 app:layout_constraintTop_toBottomOf="@+id/rocketnamec" />
 
             <TextView
                 android:id="@+id/basesignc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/base"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/spacecraftsignc"
                 app:layout_constraintTop_toTopOf="@+id/launchlocationc" />
 
             <TextView
                 android:id="@+id/timesignc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:text="@string/launch_time"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/missionsignc"
                 app:layout_constraintTop_toTopOf="@+id/datetimec" />
 
             <TextView
                 android:id="@+id/datetimec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/latei"
-                app:layout_constraintStart_toEndOf="@+id/barrierc"
+                app:layout_constraintStart_toStartOf="@+id/missionnamec"
                 app:layout_constraintTop_toBottomOf="@+id/missionnamec" />
 
             <androidx.constraintlayout.widget.Barrier
@@ -109,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:barrierDirection="right"
-                app:constraint_referenced_ids="missionsignc,basesignc,spacecraftsignc,timesignc"
+                app:constraint_referenced_ids="timesignc,basesignc,missionsignc,spacecraftsignc"
                 tools:layout_editor_absoluteX="91dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

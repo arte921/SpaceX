@@ -11,12 +11,11 @@
     <string name="base">Ground base:</string>
     <string name="payloads">Payloads:</string>
 
-    <string name="payload_nr">Payload number:</string>
+    <string name="payload_nr">"Payload "</string>
     <string name="payload_name">Payload name:</string>
     <string name="nationality">Nationality:</string>
     <string name="manufacturer">Manufacturer:</string>
-    <string name="payload_mass">Payload mass:</string>
-    <string name="kg">${jo.get("payload_mass_kg")} kg</string>
+    <string name="payload_mass">Payload mass(kg):</string>
     <string name="orbit_type">Orbit type:</string>
     <string name="type">Type:</string>
     <string name="regime">Regime:</string>
