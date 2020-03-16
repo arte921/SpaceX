@@ -20,6 +20,9 @@
     <string name="type">Type:</string>
     <string name="regime">Regime:</string>
     <string name="customers">Customers:</string>
+    <string name="description">Description:</string>
+
+    <string name="showfull">Show all data</string>
 
     <string name="longtest">dkljhafdalkfhasjfhsdklfhasdklhfsdjklfhsdjklafhklajhdfklasjfhklsjfhsdkljhfakldjsfha</string>
     <string name="latei">@string/loading</string>

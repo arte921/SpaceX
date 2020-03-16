@@ -28,6 +28,7 @@ var utilTestString = ""
 lateinit var context: Context
 
 class MainActivity : AppCompatActivity() {
+
     private fun logError(msg: String){
         if(testmode){
             Log.e("error function",msg)

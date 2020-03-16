@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/base"
-            app:layout_constraintStart_toStartOf="@+id/spacecraftsign5"
+            app:layout_constraintStart_toStartOf="@+id/missionsign5"
             app:layout_constraintTop_toTopOf="@+id/launchlocation5" />
 
         <TextView
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/spacecraft"
-            app:layout_constraintStart_toStartOf="@+id/timesign5"
+            app:layout_constraintStart_toStartOf="@+id/missionsign5"
             app:layout_constraintTop_toTopOf="@+id/rocketname5" />
 
         <TextView
@@ -43,8 +43,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/payloads"
-            app:layout_constraintStart_toStartOf="@+id/basesign5"
+            app:layout_constraintStart_toStartOf="@+id/missionsign5"
             app:layout_constraintTop_toBottomOf="@+id/launchlocation5" />
+
+        <TextView
+            android:id="@+id/descriptionsign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            app:layout_constraintStart_toStartOf="@+id/missionsign5"
+            app:layout_constraintTop_toTopOf="@+id/description" />
 
         <TextView
             android:id="@+id/timesign5"
@@ -73,10 +81,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:text="@string/latei"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/missionname5"
             app:layout_constraintStart_toStartOf="@+id/missionname5"
             app:layout_constraintTop_toBottomOf="@+id/missionname5" />
 
@@ -85,11 +91,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:text="@string/latei"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/datetime5"
+            app:layout_constraintEnd_toEndOf="@+id/missionname5"
+            app:layout_constraintStart_toStartOf="@+id/missionname5"
             app:layout_constraintTop_toBottomOf="@+id/datetime5" />
 
         <TextView
@@ -97,11 +101,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:text="@string/latei"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/rocketname5"
+            app:layout_constraintEnd_toEndOf="@+id/missionname5"
+            app:layout_constraintStart_toStartOf="@+id/missionname5"
             app:layout_constraintTop_toBottomOf="@+id/rocketname5" />
 
         <androidx.constraintlayout.widget.Barrier
@@ -117,16 +119,24 @@
             android:id="@+id/payloadsrv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:isScrollContainer="false"
             android:overScrollMode="never"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/payloadssign"
+            app:layout_constraintEnd_toEndOf="@+id/missionname5"
+            app:layout_constraintStart_toStartOf="@+id/missionsign5"
             app:layout_constraintTop_toBottomOf="@+id/payloadssign" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/latei"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/missionname5"
+            app:layout_constraintStart_toStartOf="@+id/missionname5"
+            app:layout_constraintTop_toBottomOf="@+id/payloadsrv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
