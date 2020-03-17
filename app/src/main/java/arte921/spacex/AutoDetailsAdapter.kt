@@ -36,10 +36,5 @@ class AutoDetailsAdapter(private val nsi: List<NamedStringIndented>): RecyclerVi
         }
 
         holder.view.tv.text = prototype
-
-
-
     }
-
-
 }

@@ -99,33 +99,5 @@ class LaunchDetailsActivity : AppCompatActivity() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.details,menu)
-        return true
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId){
-            R.id.showall -> {
-                /*
-                val intent = Intent(this, AutoDetailsActivity()::class.java).apply{
-                    putExtra(JONAME,jostring)
-                }
-                context.startActivity(intent)*/
-
-                showfull = !showfull
-                if(showfull){
-                    auto()
-                }else{
-                    normal()
-                }
-                /*
-                finish()
-                startActivity(intent)*/
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 }

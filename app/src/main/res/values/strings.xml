@@ -26,5 +26,9 @@
 
     <string name="longtest">dkljhafdalkfhasjfhsdklfhasdklhfsdjklfhsdjklafhklajhdfklasjfhklsjfhsdkljhfakldjsfha</string>
     <string name="latei">@string/loading</string>
+    <string name="title_activity_dualdetails">dualdetails</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_dual">DualActivity</string>
 
 </resources>

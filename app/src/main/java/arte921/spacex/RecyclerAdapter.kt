@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.launchcard.view.*
-import kotlinx.android.synthetic.main.launchdetailspage.view.*
 import java.lang.Math.random
 import java.text.DateFormat.getDateTimeInstance
 import java.util.*
 
-class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.MainViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.MainViewHolder = MainViewHolder(
+class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.MainViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder = MainViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.launchcard,parent,false))
 
     class MainViewHolder(val view: View) :RecyclerView.ViewHolder(view)
@@ -20,8 +19,8 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.MainViewHolder>()
     override fun getItemCount(): Int{
         return when(currentFlag){
             SUCCESSFUL -> json.length()
-            HASFAILED -> 2
-            TESTING -> 3
+            HASFAILED -> 1
+            TESTING -> 1
             else -> 1
 
         }
@@ -34,13 +33,8 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.MainViewHolder>()
                 val jo = json.getJSONObject(position)
 
                 holder.view.setOnClickListener{
-
-                    //val intent = Intent(context,LaunchDetailsActivity()::class.java).apply{
-
                     val intent = if(showfull) Intent(context,AutoDetailsActivity()::class.java) else Intent(context,LaunchDetailsActivity()::class.java)
-                    intent.apply{
-                        putExtra(JONAME,jo.toString())
-                    }
+                    intent.putExtra(JONAME,jo.toString())
                     context.startActivity(intent)
                 }
 

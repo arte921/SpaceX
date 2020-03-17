@@ -3,6 +3,9 @@ package arte921.spacex
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
@@ -63,5 +66,28 @@ class MainActivity : AppCompatActivity() {
             logError(error.toString())
         })
         queue.add(missionsRequest)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.details,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            R.id.showall -> {
+
+
+                showfull = !showfull
+                if(showfull){
+
+                }else{
+
+                }
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
