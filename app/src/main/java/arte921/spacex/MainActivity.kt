@@ -77,14 +77,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.showall -> {
-
-
-                showfull = !showfull
-                if(showfull){
-
-                }else{
-
-                }
+                showfull = !item.isChecked
+                item.isChecked  = showfull
                 true
             }
             else -> super.onOptionsItemSelected(item)
