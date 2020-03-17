@@ -72,7 +72,7 @@ class LaunchDetailsActivity : AppCompatActivity() {
     fun auto(){
         setContentView(R.layout.autodetailslayout)
 
-        if(nsi.size < 3) examineObject(jo,1,jo.get("mission_name").toString())
+        //if(nsi.size < 3) examineObject(jo,1,jo.get("mission_name").toString())
 
         val viewManager = LinearLayoutManager(this)
         autorv.apply{
@@ -87,6 +87,8 @@ class LaunchDetailsActivity : AppCompatActivity() {
         jostring = intent.getStringExtra(JONAME)
         jo = JSONObject(jostring)
         title = jo.get("mission_name").toString()
+
+        if(nsi.size < 3) examineObject(jo,1,jo.get("mission_name").toString())
 
         if(showfull){
             auto()
