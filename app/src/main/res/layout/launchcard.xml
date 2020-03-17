@@ -14,12 +14,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <fragment
-            android:id="@+id/fragment"
-            android:name="arte921.spacex.OverviewFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
