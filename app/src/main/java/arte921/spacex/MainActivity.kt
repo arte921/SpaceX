@@ -1,11 +1,12 @@
 package arte921.spacex
-
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
@@ -15,20 +16,17 @@ import com.android.volley.toolbox.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONArray
 import org.json.JSONObject
-
-const val url = "https://api.spacexdata.com/v3/launches/upcoming"
-const val testmode = true
-
-const val SUCCESSFUL = 0
-const val ISLOADING = 1
-const val HASFAILED = 2
-const val TESTING = 3
-const val JONAME = "the_jo_JSONObject"
+import java.lang.Math.random
+import java.lang.RuntimeException
+import java.text.DateFormat
+import java.util.*
 
 lateinit var json: JSONArray
 var currentFlag = ISLOADING
 var utilTestString = ""
 lateinit var context: Context
+lateinit var sharedPref: SharedPreferences
+lateinit var queue: RequestQueue
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,10 +39,43 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun refresh(){
+        val missionsRequest = JsonArrayRequest(Request.Method.GET,url,null,Response.Listener { response ->
+            currentFlag = SUCCESSFUL
+            json = response
+            mainrv.adapter?.notifyDataSetChanged()
+
+            with(sharedPref.edit()){
+                putString(JSONSAVENAME, response.toString())
+                putLong(TIMESAVENAME, System.currentTimeMillis())
+                apply()
+            }
+
+        }, Response.ErrorListener {error ->
+            val cachedString = sharedPref.getString(JSONSAVENAME, thiscantbejson)
+            if(cachedString != thiscantbejson){
+                currentFlag = SUCCESSFUL
+                json = JSONArray(cachedString)
+                val formattedcachedate = DateFormat.getDateTimeInstance().format(Date(sharedPref.getLong(TIMESAVENAME,0))).toString()
+                Toast.makeText(applicationContext,"No connection.\nShowing data from $formattedcachedate",Toast.LENGTH_LONG).show()
+            }else{
+                currentFlag = HASFAILED
+                logError(error.toString())
+            }
+            mainrv.adapter?.notifyDataSetChanged()
+        })
+        queue.add(missionsRequest)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         context = this
+
+        sharedPref = this.getSharedPreferences(FILEKEY,Context.MODE_PRIVATE)
+        showfull = sharedPref.getBoolean(FULLSAVENAME, showfull)
+
+        showfull = sharedPref.getBoolean(FULLSAVENAME,true)
 
         val viewManager = LinearLayoutManager(this)
         mainrv.apply{
@@ -52,25 +83,21 @@ class MainActivity : AppCompatActivity() {
             adapter = RecyclerAdapter()
         }
 
-        //class NamedStringIntended(val label: String, val str: String, val Indentation: Int)
-
-        val queue = RequestQueue(DiskBasedCache(cacheDir,1024*1024), BasicNetwork(HurlStack())).apply{start()}
-
-        val missionsRequest = JsonArrayRequest(Request.Method.GET,url,null,Response.Listener { response ->
-            currentFlag = SUCCESSFUL
-            json = response
-            mainrv.adapter?.notifyDataSetChanged()
-        }, Response.ErrorListener {error ->
-            currentFlag = HASFAILED
-            mainrv.adapter?.notifyDataSetChanged()
-            logError(error.toString())
-        })
-        queue.add(missionsRequest)
+        queue = RequestQueue(DiskBasedCache(cacheDir,1024*1024), BasicNetwork(HurlStack())).apply{start()}
+        refresh()
+/*
+        swiperefresh.setOnRefreshListener{
+            refresh()
+        }*/
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.details,menu)
+        if (menu != null) menu.getItem(0).isChecked  = showfull
+
         return true
     }
 
@@ -79,6 +106,10 @@ class MainActivity : AppCompatActivity() {
             R.id.showall -> {
                 showfull = !item.isChecked
                 item.isChecked  = showfull
+                with(sharedPref.edit()){
+                    putBoolean(FULLSAVENAME, showfull)
+                    apply()
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)

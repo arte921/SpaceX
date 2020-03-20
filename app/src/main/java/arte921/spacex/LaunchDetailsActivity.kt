@@ -21,40 +21,18 @@ lateinit var jostring: String
 lateinit var jo: JSONObject
 
 class LaunchDetailsActivity : AppCompatActivity() {
-    var nsi: MutableList<NamedStringIndented> = mutableListOf()
-
-    fun examineObject(cjo: JSONObject, indentation: Int, thisdottag: String){
-        nsi.add(NamedStringIndented(thisdottag,"", indentation-1, ISHEADER))
-        for(tag in cjo.keys()){
-            try{
-                examineArray(cjo.getJSONArray(tag),indentation+1,tag)
-            }catch(_: JSONException){
-                try{
-                    examineObject(cjo.getJSONObject(tag),indentation+1,tag)
-                }catch(_: JSONException){
-                    if(!cjo.isNull(tag)) nsi.add(NamedStringIndented(tag,cjo.getString(tag),indentation,ISPROPERTY))
-                }
-            }
-        }
-    }
-
-    fun examineArray(cja: JSONArray, indentation: Int, thisdottag: String){
-        nsi.add(NamedStringIndented(thisdottag,"", indentation-1, ISHEADER))
-        for(i in 0 until cja.length()){
-            try{
-                examineArray(cja.getJSONArray(i),indentation+1, "${thisdottag.trimEnd('s')} ${i+1}")
-            }catch(_: JSONException){
-                try{
-                    examineObject(cja.getJSONObject(i),indentation+1,"${thisdottag.trimEnd('s')} ${i+1}")
-                }catch(_: JSONException){
-                    if(!cja.isNull(i)) nsi.add(NamedStringIndented(i.toString(),cja.getString(i),indentation,ISPROPERTY))
-                }
-            }
-        }
-    }
 
     fun normal(){
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.launchdetailspage)
+
+        jostring = intent.getStringExtra(JONAME)
+        jo = JSONObject(jostring)
+        title = jo.get("mission_name").toString()
 
         missionname5.text = jo.get("mission_name").toString()
         datetime5.text = DateFormat.getDateTimeInstance().format(Date(jo.get("launch_date_unix").toString().toLong() * 1000)).toString()
@@ -68,36 +46,4 @@ class LaunchDetailsActivity : AppCompatActivity() {
             adapter = PayloadsAdapter(jo.getJSONObject("rocket").getJSONObject("second_stage").getJSONArray("payloads"))
         }
     }
-
-    fun auto(){
-        setContentView(R.layout.autodetailslayout)
-
-        //if(nsi.size < 3) examineObject(jo,1,jo.get("mission_name").toString())
-
-        val viewManager = LinearLayoutManager(this)
-        autorv.apply{
-            layoutManager = viewManager
-            adapter = AutoDetailsAdapter(nsi)
-        }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        jostring = intent.getStringExtra(JONAME)
-        jo = JSONObject(jostring)
-        title = jo.get("mission_name").toString()
-
-        if(nsi.size < 3) examineObject(jo,1,jo.get("mission_name").toString())
-
-        if(showfull){
-            auto()
-        }else{
-            normal()
-        }
-
-
-    }
-
-
 }
