@@ -14,8 +14,8 @@ import java.lang.Math.random
 class AutoDetailsActivity :AppCompatActivity() {
     var nsi: MutableList<NamedStringIndented> = mutableListOf()
 
-    fun examineObject(cjo: JSONObject, indentation: Int, thisdottag: String){
-        nsi.add(NamedStringIndented(thisdottag,"", indentation-1, ISHEADER))
+    fun examineObject(cjo: JSONObject, indentation: Int, parenttag: String){
+        nsi.add(NamedStringIndented(parenttag,"", indentation-1, ISHEADER))
         for(tag in cjo.keys()){
             try{
                 examineArray(cjo.getJSONArray(tag),indentation+1,tag)
@@ -29,14 +29,14 @@ class AutoDetailsActivity :AppCompatActivity() {
         }
     }
 
-    fun examineArray(cja: JSONArray, indentation: Int, thisdottag: String){
-        nsi.add(NamedStringIndented(thisdottag,"", indentation-1, ISHEADER))
+    fun examineArray(cja: JSONArray, indentation: Int, parenttag: String){
+        nsi.add(NamedStringIndented(parenttag,"", indentation-1, ISHEADER))
         for(i in 0 until cja.length()){
             try{
-                examineArray(cja.getJSONArray(i),indentation+1, "${thisdottag.trimEnd('s')} ${i+1}")
+                examineArray(cja.getJSONArray(i),indentation+1, "${parenttag.trimEnd('s')} ${i+1}")
             }catch(_: JSONException){
                 try{
-                    examineObject(cja.getJSONObject(i),indentation+1,"${thisdottag.trimEnd('s')} ${i+1}")
+                    examineObject(cja.getJSONObject(i),indentation+1,"${parenttag.trimEnd('s')} ${i+1}")
                 }catch(_: JSONException){
                     if(!cja.isNull(i)) nsi.add(NamedStringIndented(i.toString(),cja.getString(i),indentation,ISPROPERTY))
                 }
